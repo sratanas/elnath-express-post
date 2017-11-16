@@ -29,7 +29,7 @@ router.get('/all', function (req, res){
 router.post('/new', function (req, res){
     console.log('hello is this logging on the terminal')
     console.log('req.body in new quote post',req.body);
-    quotesData.push({quoteText: req.body.quote_to_add}); //adding to quotes-data
+    quotesData.push({quoteText: req.body.quote_to_add, author: req.body.author_to_add}); //adding to quotes-data
     res.sendStatus(200);
 })
 

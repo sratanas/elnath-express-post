@@ -38,7 +38,7 @@ $(document).ready(function () {
         $.ajax({
             method: 'POST', // standard to capitalize it
             url: '/quote/new',
-            data: { quote_to_add: $('#input').val()},     //data should always be an object //caps don't work here
+            data: { quote_to_add: $('#input').val(), author_to_add: $('#inputAuthor').val()},     //data should always be an object //caps don't work here
             success: function (response) {
                 console.log('New quote post response', response);
                 //get request for all of the quotes
@@ -47,6 +47,9 @@ $(document).ready(function () {
         })
     })
 });
+
+
+
 function getAllQuotes() {
     $.ajax({
         method: 'GET',
@@ -55,7 +58,7 @@ function getAllQuotes() {
             console.log('all quotes array', response);
             $('ul').html('')
             for (var i=0; i<response.length; i++){ //.append doesn't work with arrays, need to create a for loop.
-                $('ul').append('<li>'+ response[i].quoteText +'</li>');
+                $('ul').append('<li><strong>Quote: </strong>'+ response[i].quoteText +' <strong>Author:</strong>' + response[i].author + '</li>');
                 // quoteArray.push(response[i]);
             
             }
